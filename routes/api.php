@@ -21,6 +21,8 @@ use App\Http\Controllers\Api\V1\Organisation\OrganisationRemoveUserController;
 use App\Http\Controllers\Api\V1\Auth\LoginController;
 use App\Http\Middleware\LoginAttempts;
 
+use App\Http\Controllers\BlogCategoryController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -76,6 +78,16 @@ Route::prefix('v1')->group(function () {
         Route::get('/testimonials/{testimonial_id}', [TestimonialController::class, 'show']);
     });
 
+    
+        
+   
+
 });
+
+Route::middleware('auth:api')->group(function () {
+    Route::post('/v1/blog-categories', [BlogCategoryController::class, 'store']);
+});
+
+
 
 
